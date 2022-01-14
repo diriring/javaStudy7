@@ -1,12 +1,14 @@
 package com.java.s1.adressbook;
 
+import java.util.Calendar;
+
 public class PeopleDTO {
 	
 	private String name;
 	private String nickname;
 	private String email;
 	private String phonenum;
-	private String birth;
+	private Calendar birth;
 	public String getName() {
 		return name;
 	}
@@ -31,11 +33,18 @@ public class PeopleDTO {
 	public void setPhonenum(String phonenum) {
 		this.phonenum = phonenum;
 	}
-	public String getBirth() {
+	public Calendar getBirth() {
 		return birth;
 	}
 	public void setBirth(String birth) {
-		this.birth = birth;
+		int year = Integer.parseInt(birth.substring(0,4));
+		int month = Integer.parseInt(birth.substring(4,6))-1;
+		int day = Integer.parseInt(birth.substring(6));
+		
+		Calendar ca = Calendar.getInstance(); 
+		ca.set(year, month, day);
+		
+		this.birth = ca;	
 	}
 
 }
